@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 
-from base import base_request, get_follows
+from base import base_request, get_followeds
 from excel_adapter import excel_data_getter_for_xlsx
 from excel_adapter import save_data
 import click
 import os.path as osp
 
 
-def get_follows_data(uid, path, page_size=50, number_of_follow=50, en=False):
+def get_followeds_data(uid, path, page_size=50, number_of_follow=50, en=False):
     """
     :param uid:
     :param path:
@@ -24,7 +24,7 @@ def get_follows_data(uid, path, page_size=50, number_of_follow=50, en=False):
     flag = True
     page_count = 0
     while flag:
-        this = get_follows(uid, limit=page_size, offset=page_count*page_size)
+        this = get_followeds(uid, limit=page_size, offset=page_count*page_size)
         body_data += this
         print(f"page_count={page_count}, page_size={page_size}, len(this)={len(this)}")
         page_count += 1
@@ -51,8 +51,8 @@ help_number = "最多拉取用户数量, 如果填`-1`则代表不限制数量, 
 @click.option("-u", "--uid", "uid", help=help_uid, type=int, required=True)
 @click.option("-n", "--number-of-follow", "number_of_follow", help=help_number, type=int, default=50)
 def main(uid, output_dir, number_of_follow):
-    output_path = osp.join(output_dir, "music163_follow_users.xlsx")
-    get_follows_data(uid, output_path, number_of_follow=number_of_follow)
+    output_path = osp.join(output_dir, "music163_followeds_users.xlsx")
+    get_followeds_data(uid, output_path, number_of_follow=number_of_follow)
 
 
 if __name__ == '__main__':
