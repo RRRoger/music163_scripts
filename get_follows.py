@@ -41,11 +41,12 @@ def get_follows(uid, limit=30, offset=0):
     return result
 
 
-def get_follows_data(uid, path, page_size=50, en=False):
+def get_follows_data(uid, path, page_size=50, number_of_follow=50, en=False):
     """
     :param uid:
     :param path:
     :param page_size: 每页调用数量
+    :param number_of_follow: 最多拉取数量
     :param en: 使用英文表头
     :return:
     """
@@ -64,8 +65,7 @@ def get_follows_data(uid, path, page_size=50, en=False):
         if len(this) == 0:
             flag = False
 
-        # to comment
-        if page_count == 1:
+        if len(body_data) >= number_of_follow > 0:
             flag = False
 
     final_body = [header] + body_data
@@ -73,18 +73,20 @@ def get_follows_data(uid, path, page_size=50, en=False):
     save_data(path, base_data)
 
 
-help_c = """Get Cloud Music Follow Users"""
-help_output = "Excel输出路径"
-help_uid = "网易云音乐用户id"
+help_c = """Get Netease Cloud Music Follow Users"""
+help_output = "Excel输出路径, like: ~/Desktop"
+help_uid = "网易云音乐用户id, like: 46304650"
+help_number = "最多拉取用户数量, 如果填`-1`则代表不限制数量, like: 100"
 
 
 @click.command()
 @click.help_option("-h", "--help", help=help_c)
-@click.option("-o", "--output-dir", "output_dir", help=help_output, type=str, default="./follow_users.xlsx")
-@click.option("-u", "--uid", "uid", help=help_uid, type=int, default=46304650)
-def main(uid, output_dir):
+@click.option("-o", "--output-dir", "output_dir", help=help_output, type=str, default="~/Desktop")
+@click.option("-u", "--uid", "uid", help=help_uid, type=int, required=True)
+@click.option("-n", "--number-of-follow", "number_of_follow", help=help_number, type=int, default=50)
+def main(uid, output_dir, number_of_follow):
     output_path = osp.join(output_dir, "music163_follow_users.xlsx")
-    get_follows_data(uid, output_path)
+    get_follows_data(uid, output_path, number_of_follow=number_of_follow)
 
 
 if __name__ == '__main__':
