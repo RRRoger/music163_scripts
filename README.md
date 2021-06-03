@@ -12,7 +12,9 @@
 
 ## 使用`NeteaseCloudMusicApi`
 
-> https://github.com/Binaryify/NeteaseCloudMusicApi
+> repo: https://github.com/Binaryify/NeteaseCloudMusicApi
+> 
+> Api Doc: https://binaryify.github.io/NeteaseCloudMusicApi
 
 ```bash
 # Installation
