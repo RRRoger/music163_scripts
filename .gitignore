@@ -3,6 +3,7 @@
 test*.xlsx
 music163_*.xlsx
 user_private.conf
+cookie.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

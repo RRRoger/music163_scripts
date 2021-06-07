@@ -75,20 +75,20 @@ def get_followeds(uid, limit=30, offset=0):
 def get_follows(uid, limit=30, offset=0):
     return get_fos(uid, key="follows", limit=limit, offset=offset)
 
-def login(login_way, account, password):
+
+def login():
     if login_way == 'phone':
         rest = f"/login/cellphone?phone={account}&password={password}"
     elif login_way == 'email':
         rest = f'/login?email={account}&password={password}'
     else:
-        pass
+        raise Exception("暂不支持")
     data = base_request(rest)
     cookie = data.get("cookie", {}) or ''
     with open("./cookie.txt", "w+") as f:
         f.write(cookie)
-
     return
 
 
 if __name__ == '__main__':
-    login(login_way, account, password)
+    login()

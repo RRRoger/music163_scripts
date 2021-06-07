@@ -27,6 +27,12 @@ npm install
 node app.js
 ```
 
+- [调用前须知](https://binaryify.github.io/NeteaseCloudMusicApi/#/?id=调用前须知)
+- [登录](https://binaryify.github.io/NeteaseCloudMusicApi/#/?id=登录)
+- [获取用户关注列表](https://binaryify.github.io/NeteaseCloudMusicApi/#/?id=获取用户关注列表)
+- [获取用户粉丝列表](https://binaryify.github.io/NeteaseCloudMusicApi/#/?id=获取用户粉丝列表)
+- [关注/取消关注用户](https://binaryify.github.io/NeteaseCloudMusicApi/#/?id=关注取消关注用户)
+
 ## Init
 
 ```bash
