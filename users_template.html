@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="scripts/jquery.min.js"></script>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+
+</head>
+<body>
+
+<h2>You Follow Users</h2>
+
+<table>
+  <tr>
+    <th>头像</th>
+    <th>用户昵称</th>
+    <th>用户id</th>
+    <th>粉丝数量</th>
+    <th>性别</th>
+    <th>Vip</th>
+    <th>取消关注</th>
+  </tr>
+  USERS_DATA
+</table>
+
+<script type="text/javascript">
+  
+  function unfollow(user_id){
+    console.log(user_id);
+  };
+
+</script>
+
+</body>
+</html>
